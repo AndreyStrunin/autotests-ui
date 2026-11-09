@@ -1,5 +1,3 @@
-from textwrap import fill
-
 from playwright.sync_api import Page, expect
 
 from pages.base_page import BasePage
@@ -11,7 +9,6 @@ class CreateCoursePage(BasePage):
 
         self.create_course_title = page.get_by_test_id('create-course-toolbar-title-text')
         self.create_course_button = page.get_by_test_id('create-course-toolbar-create-course-button')
-        self.check_visible_create_course_title = page.get_by_test_id('create-course-toolbar-create-course-button')
 
         self.preview_empty_view_image = page.get_by_test_id('create-course-preview-image-upload-widget-preview-image')
         self.preview_empty_view_icon = page.get_by_test_id('create-course-preview-empty-view-icon')
@@ -47,7 +44,7 @@ class CreateCoursePage(BasePage):
 
     def check_visible_create_course_title(self):
         expect(self.create_course_title).to_be_visible()
-        expect(self.create_course_title).to_have_text('Create Course')
+        expect(self.create_course_title).to_have_text('Create course')
 
     def click_create_course_button(self):
         self.create_course_button.click()
@@ -68,13 +65,13 @@ class CreateCoursePage(BasePage):
         expect(self.preview_empty_view_description).to_have_text('Preview of selected image will be displayed here')
 
     def check_visible_image_upload_view(self, is_image_uploaded: bool = False):
-        expect(self.preview_empty_view_icon).to_be_visible()
+        expect(self.preview_image_upload_icon).to_be_visible()
 
-        expect(self.preview_empty_view_title).to_be_visible()
-        expect(self.preview_empty_view_title).to_have_text('Tap on "Upload image" button to select file')
+        expect(self.preview_image_upload_title).to_be_visible()
+        expect(self.preview_image_upload_title).to_have_text('Tap on "Upload image" button to select file')
 
-        expect(self.preview_empty_view_description).to_be_visible()
-        expect(self.preview_empty_view_description).to_have_text('Recommended file size 540X300')
+        expect(self.preview_image_upload_description).to_be_visible()
+        expect(self.preview_image_upload_description).to_have_text('Recommended file size 540X300')
 
         expect(self.preview_image_upload_button).to_be_visible()
 
