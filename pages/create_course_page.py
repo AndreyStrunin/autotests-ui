@@ -12,9 +12,10 @@ class CreateCoursePage(BasePage):
 
         self.create_course_title = page.get_by_test_id('create-course-toolbar-title-text')
         self.create_course_button = page.get_by_test_id('create-course-toolbar-create-course-button')
+
         self.image_upload_widget = ImageUploadWidgetComponent(page, 'create-course-preview')
         self.exercises_empty_view = EmptyViewComponent(page, 'create-course-exercises')
-        self.create_course_form = CreateCourseExerciseFormComponent(page)
+        self.create_exercise_form = CreateCourseExerciseFormComponent(page)
 
         self.preview_form_title_input = page.get_by_test_id('create-course-form-title-input').locator('input')
         self.preview_form_estimated_time_input = page.get_by_test_id('create-course-form-estimated-time-input').locator(
@@ -92,6 +93,9 @@ class CreateCoursePage(BasePage):
 
     def check_visible_create_exercise_button(self):
         expect(self.create_exercise_button).to_be_visible()
+
+    def click_create_exercise_button(self):
+        self.create_exercise_button.click()
 
     def check_visible_exercises_empty_view(self):
         self.exercises_empty_view.check_visible(
