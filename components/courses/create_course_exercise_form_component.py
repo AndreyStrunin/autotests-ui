@@ -1,4 +1,4 @@
-from playwright.sync_api import expect, Page
+from playwright.sync_api import Page
 
 from components.base_component import BaseComponent
 from elements.button import Button
@@ -32,8 +32,8 @@ class CreateCourseExerciseFormComponent(BaseComponent):
         self.description_input.check_have_value(description, index=index)
 
     def fill_create_form(self, index: int, title: str, description: str):
-        self.title_input.fill(title=title, index=index)
+        self.title_input.fill(title, index=index)
         self.title_input.check_have_value(title, index=index)
 
-        self.description_input.fill(description=description, index=index)
+        self.description_input.fill(description, index=index)
         self.description_input.check_have_value(description, index=index)
