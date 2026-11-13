@@ -18,7 +18,7 @@ with sync_playwright() as playwright:
     registration_button = page.get_by_test_id('registration-page-registration-button')
     registration_button.click()
 
-    context.storage_state(path='registration.json')
+    context.storage_state(path='../registration.json')
 
 with sync_playwright() as playwright:
     browser = playwright.chromium.launch(headless=False)
