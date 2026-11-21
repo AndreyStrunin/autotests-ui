@@ -6,7 +6,7 @@ from components.courses.create_course_form_component import CreateCourseFormComp
 from components.courses.create_course_toolbar_view_component import CreateCourseToolbarViewComponent
 from components.navigation.navbar_component import NavbarComponent
 from components.views.empty_view_component import EmptyViewComponent
-from components.views.imge_upload_widget_component import ImageUploadWidgetComponent
+from components.views.image_upload_widget_component import ImageUploadWidgetComponent
 from pages.base_page import BasePage
 
 

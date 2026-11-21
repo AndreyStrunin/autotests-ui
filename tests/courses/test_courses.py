@@ -12,7 +12,6 @@ from tools.allure.stories import AllureStory
 @pytest.mark.courses
 @pytest.mark.regression
 @allure.tag(AllureTag.REGRESSION, AllureTag.COURSES)
-@allure.tag(AllureTag.REGISTRATION, AllureTag.REGISTRATION)
 @allure.epic(AllureEpic.LMS)
 @allure.feature(AllureFeature.COURSES)
 @allure.story(AllureStory.COURSES)
@@ -56,7 +55,7 @@ class TestCourses:
 
         courses_list_page.toolbar_view.check_visible()
         courses_list_page.course_view.check_visible(
-            index=0,
+            position=0,
             title="Playwright",
             estimated_time="2 weeks",
             max_score="100",
@@ -78,13 +77,13 @@ class TestCourses:
 
         courses_list_page.toolbar_view.check_visible()
         courses_list_page.course_view.check_visible(
-            index=0,
+            position=0,
             title="Playwright",
             estimated_time="2 weeks",
             max_score="100",
             min_score="10")
 
-        courses_list_page.course_view.menu.click_edit(index=0)
+        courses_list_page.course_view.menu.click_edit(position=0)
         create_course_page.create_course_form.fill_form(
             title="Playwright111",
             estimated_time="3 weeks",
@@ -96,7 +95,7 @@ class TestCourses:
 
         courses_list_page.toolbar_view.check_visible()
         courses_list_page.course_view.check_visible(
-            index=0,
+            position=0,
             title="Playwright111",
             estimated_time="3 weeks",
             max_score="200",

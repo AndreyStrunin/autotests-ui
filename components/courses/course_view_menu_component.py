@@ -12,14 +12,14 @@ class CourseViewMenuComponent(BaseComponent):
         self.edit_menu_button = Button(page, 'course-view-edit-menu-item', 'Edit')
         self.delete_menu_button = Button(page, 'course-view-delete-menu-item', 'Delete')
 
-    def click_edit(self, index: int):
-        self.menu_button.click(nth=index)
+    def click_edit(self, position: int):
+        self.menu_button.click(nth=position)
 
-        self.edit_menu_button.check_visible(nth=index)
-        self.edit_menu_button.click(nth=index)
+        self.edit_menu_button.check_visible(nth=position)
+        self.edit_menu_button.click(nth=position)
 
-    def click_delete(self, index: int):
-        self.menu_button.click(nth=index)
+    def click_delete(self, position: int):
+        self.menu_button.click(nth=position)
 
-        self.delete_menu_button.check_visible(nth=index)
-        self.delete_menu_button.click(nth=index)
+        self.delete_menu_button.check_visible(nth=position)
+        self.delete_menu_button.click(nth=position)

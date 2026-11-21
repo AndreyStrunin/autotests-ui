@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+
+# Test artifacts
+allure-results/
+allure-report/
+browser-state.json
+*.log
+
+# IDE
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
