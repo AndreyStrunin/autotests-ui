@@ -7,6 +7,7 @@ from tools.allure.tags import AllureTag
 from tools.allure.epics import AllureEpic
 from tools.allure.features import AllureFeature
 from tools.allure.stories import AllureStory
+from allure_commons.types import Severity
 
 
 
@@ -18,6 +19,7 @@ from tools.allure.stories import AllureStory
 @allure.story(AllureStory.REGISTRATION)
 class TestRegistration:
     @allure.title("Registration with correct username and password")
+    @allure.severity(Severity.CRITICAL)
     def test_successful_registration(self, registration_page: RegistrationPage, dashboard_page: DashboardPage):
         registration_page.go_to("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/registration")
         registration_page.registration_form.fill_form(

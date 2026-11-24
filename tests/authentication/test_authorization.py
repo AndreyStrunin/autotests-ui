@@ -7,6 +7,7 @@ from pages.dashboard.dashboard_page import DashboardPage
 from tools.allure.epics import AllureEpic
 from tools.allure.features import AllureFeature
 from tools.allure.stories import AllureStory
+from allure_commons.types import Severity
 
 
 @pytest.mark.regression
@@ -18,6 +19,7 @@ from tools.allure.stories import AllureStory
 class TestAuthorization:
     @allure.tag(AllureTag.USER_LOGIN)
     @allure.title("User login with correct email or password")
+    @allure.severity(Severity.BLOCKER)
     def test_successful_authorization(self, registration_page: RegistrationPage, dashboard_page: DashboardPage,
                                       login_page: LoginPage):
         registration_page.go_to("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/registration")
@@ -47,6 +49,7 @@ class TestAuthorization:
     )
     @allure.tag(AllureTag.USER_LOGIN)
     @allure.title('User login with wrong email or password')
+    @allure.severity(Severity.CRITICAL)
     def test_wrong_email_or_password_authorization(self, login_page: LoginPage, email: str, password: str):
         login_page.go_to("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/login")
         login_page.login_form.fill_form(email=email, password=password)
@@ -55,6 +58,7 @@ class TestAuthorization:
 
     @allure.tag(AllureTag.NAVIGATION)
     @allure.title('Navigation from login page to registration')
+    @allure.severity(Severity.NORMAL)
     def test_navigate_from_authorization_to_registration(self, login_page: LoginPage,
                                                          registration_page: RegistrationPage, ):
         login_page.go_to("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/login")
