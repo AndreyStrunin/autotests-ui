@@ -13,9 +13,14 @@ allure-results/
 allure-report/
 browser-state.json
 *.log
+/tracing/
+/videos/
 
 # IDE
 .idea/
+
+# AI assistant
+.gigacode/
 
 # OS
 .DS_Store

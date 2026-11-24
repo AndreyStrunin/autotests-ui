@@ -2,18 +2,18 @@ from pathlib import Path
 from typing import Any, Generator
 
 import pytest
-from playwright.sync_api import Page, Playwright
+from _pytest.fixtures import SubRequest
+from playwright.sync_api import Playwright, Page
 
 from pages.authentication.registration_page import RegistrationPage
+from tools.playwright.pages import initialize_playwright_page
 
 BROWSER_STATE_PATH = Path(__file__).resolve().parents[1] / "browser-state.json"
 
 
 @pytest.fixture
-def chromium_page(playwright: Playwright) -> Generator[Page, Any, None]:
-    browser = playwright.chromium.launch(headless=False)
-    yield browser.new_page()
-    browser.close()
+def chromium_page(request: SubRequest, playwright: Playwright) -> Generator[Page, Any, None]:
+    yield from initialize_playwright_page(playwright, test_name=request.node.name)
 
 
 @pytest.fixture(scope='session')
@@ -38,8 +38,6 @@ def initialize_browser_state(playwright: Playwright) -> None:
 
 
 @pytest.fixture(scope='function')
-def chromium_page_with_state(initialize_browser_state, playwright: Playwright) -> Generator[Page, Any, None]:
-    browser = playwright.chromium.launch(headless=False)
-    context = browser.new_context(storage_state=BROWSER_STATE_PATH)
-    yield context.new_page()
-    browser.close()
+def chromium_page_with_state(request: SubRequest, initialize_browser_state, playwright: Playwright) -> Generator[
+    Page, Any, None]:
+    yield from initialize_playwright_page(playwright, test_name=request.node.name, store_state=BROWSER_STATE_PATH)
